@@ -1,0 +1,35 @@
+<ion-content>
+  <ion-slides pager="true" [options]="slideOpts" (ionSlideDidChange)="sliderChanges($event)">
+
+    <ion-slide *ngFor="let slide of slides; let i = index">
+      <div class="slide0">
+        <div class="skip-button">
+          <ion-button fill="clear" class="ion-color-light" (click)="skip()">Saltar</ion-button>
+        </div>
+        <img [src]="slide.imageUrl" width="100%">
+        <div>
+          <h1> {{slide.title}} </h1>
+          <span>{{slide.slideDesc}}</span>
+        </div>
+
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="slide0">
+        <div class="skip-button">
+          <ion-button fill="clear" color="dark" (click)="skip()">Saltar</ion-button>
+        </div>
+        <img src="assets/imgs/appicon.png">
+        <!-- <div>
+          <h1> MODO OSCURO </h1>                
+          <span>Utilice todas las funciones de la aplicación en los modos oscuro o claro </span>
+          <div class="hint">(Intente cambiar su pantalla a Oscuro / Claro)</div>
+        </div> -->
+        <div class="ion-padding ion-margin">
+          <ion-button color="primary" class="btnSubmit slideTitle ion-text-uppercase ion-padding-horizontal"
+            (click)="skip()">Empezar</ion-button>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

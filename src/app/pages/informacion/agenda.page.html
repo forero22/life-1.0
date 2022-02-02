@@ -1,0 +1,141 @@
+<ion-header>
+  <ion-toolbar>  
+    <ion-buttons slot="start"  >
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <div slot="start" class="toolbarDiv" >
+      <ion-title color="light" class="title-md" mode="md">
+        Información
+    </ion-title>
+    </div>
+  </ion-toolbar>
+   
+ <ion-segment mode="md" (ionChange)="segmentChanged($event)" value="chat" [(ngModel)]="segmentTab">
+    <ion-segment-button value="chat" fixed>
+      <div class="contentCenter">
+        <ion-text slot=end>Para que sirve la APP</ion-text>
+      </div>
+    </ion-segment-button>
+
+    <ion-segment-button value="friends"  >
+      <div class="contentCenter"   >
+        <ion-text slot=end >Funcionamiento del APP</ion-text>
+      </div>
+    </ion-segment-button>
+
+    <!-- <ion-segment-button value="group">
+      <div class="contentCenter">
+        <ion-text slot=end>Vencidas</ion-text>
+      </div>
+    </ion-segment-button> -->
+  </ion-segment>
+</ion-header>
+
+
+
+
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+ 
+      <div class="contentCenter" >
+              
+            <ion-card-title> La seguridad personal desde tu móvil  </ion-card-title>
+            
+     </div>                  
+     <div class="contentCenter" >  
+     </div>  
+      <p> 
+         El servicio de protección fuera del hogar, 
+         Con esta nueva funcionalidad, gestionable desde la aplicación Smart, 
+         los usuarios estarán protegidos en cualquier momento y en cualquier lugar, 
+         siempre que lo necesiten.  
+        </p>
+
+         <p1>
+           Cuenta con dos funcionalidades. La primera es el Botón SOS que el
+           cliente puede activar, cuando está fuera del hogar, si necesita ayuda ante 
+           cualquier amenaza, riesgo o situación de emergencia. La segunda es la Cuenta
+            Atrás que ofrece la tranquilidad de poder realizar el trayecto estando 
+            siempre protegido hasta que se llegue a destino.
+          </p1>
+        
+          <p2>
+            Botón SOS  ante una situación de peligro, 
+            el usuario pulsa el Botón SOS  inmediatamente, 
+            desde la Central Receptora de Alarmas (CRA), se activa el protocolo de emergencia. 
+            Este procedimiento consiste en la grabación de un clip de vídeo y audio 
+            desde que el cliente pulsa el botón. Además, un operador de la CRA contactará
+             con el usuario para confirmar la alarma. En caso de no poder establecer 
+             comunicación con el cliente, la CRA avisará a los servicios de emergencia 
+             (112) y a los familiares que se hayan designado previamente como personas 
+             de contacto. Si el Botón SOS fuera activado por error, el usuario podrá 
+             introducir un código de desactivación.
+          </p2>
+
+      
+      </ion-card-header>
+      </ion-card>
+      </ion-content>
+
+
+
+
+
+<ion-content>
+
+  <ion-list *ngIf="segmentTab === 'chat' " class="ion-no-padding">
+    <div *ngFor="let item of data">
+      <ion-item-sliding *ngIf="item.fecha">
+        <ion-item>
+          <ion-label>
+            <div class="withcount">
+              <div class="nameAvatar">
+                <h2>{{item.clientes.cliente}}  
+                </h2>
+              </div>
+              <div class="timeEnd">
+                <ion-text slot="end" color="medium" *ngIf="item.fecha">{{item.fecha | date : "dd.MM.y hh:mm a"}}
+                </ion-text>
+              </div>
+            </div>
+            <p class="widthHalf" *ngIf="item.telefono">{{item.telefono}}</p>
+            <p class="widthHalf">{{item.direccion}}</p>
+            <p class="widthHalf">{{item.observaciones}}</p>
+          </ion-label>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option>
+            <div class="timeEnd">
+              <div class="chatCount">
+                <ion-icon name="trash" expand="icon-only"></ion-icon>
+              </div>
+            </div>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </div>
+
+
+
+
+  </ion-list>
+  <ion-list *ngIf="segmentTab === 'friends' " class="ion-no-padding friends-tab">
+    <ion-item *ngFor="let item of data">
+      <ion-label>
+        <div class="withcount">
+          <div class="nameAvatar">
+            <h2>{{item.clientes.cliente}}
+
+
+            </h2>
+          </div>
+        </div>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+
